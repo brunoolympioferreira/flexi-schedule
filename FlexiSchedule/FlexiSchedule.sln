@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexiSchedule.API", "FlexiSchedule.API\FlexiSchedule.API.csproj", "{2FB3E8B2-D65B-4FC7-BC02-CE1D0DBB7B02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexiSchedule.Domain", "FlexiSchedule.Domain\FlexiSchedule.Domain.csproj", "{A0F3CDCC-8DFE-4410-994F-D34CD9088C7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexiSchedule.Application", "FlexiSchedule.Application\FlexiSchedule.Application.csproj", "{EB74CE54-E2BB-419B-B829-EB0A1679FDAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexiSchedule.Infrastructure", "FlexiSchedule.Infrastructure\FlexiSchedule.Infrastructure.csproj", "{D8018B80-6A6A-4E55-9DA3-DA766747CA0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexiSchedule.CrossCutting", "FlexiSchedule.CrossCutting\FlexiSchedule.CrossCutting.csproj", "{01247009-CB74-4890-977C-56851526A316}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FB3E8B2-D65B-4FC7-BC02-CE1D0DBB7B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB3E8B2-D65B-4FC7-BC02-CE1D0DBB7B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB3E8B2-D65B-4FC7-BC02-CE1D0DBB7B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB3E8B2-D65B-4FC7-BC02-CE1D0DBB7B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F3CDCC-8DFE-4410-994F-D34CD9088C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F3CDCC-8DFE-4410-994F-D34CD9088C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F3CDCC-8DFE-4410-994F-D34CD9088C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F3CDCC-8DFE-4410-994F-D34CD9088C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB74CE54-E2BB-419B-B829-EB0A1679FDAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB74CE54-E2BB-419B-B829-EB0A1679FDAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB74CE54-E2BB-419B-B829-EB0A1679FDAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB74CE54-E2BB-419B-B829-EB0A1679FDAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8018B80-6A6A-4E55-9DA3-DA766747CA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8018B80-6A6A-4E55-9DA3-DA766747CA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8018B80-6A6A-4E55-9DA3-DA766747CA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8018B80-6A6A-4E55-9DA3-DA766747CA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01247009-CB74-4890-977C-56851526A316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01247009-CB74-4890-977C-56851526A316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01247009-CB74-4890-977C-56851526A316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01247009-CB74-4890-977C-56851526A316}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {434E2924-87A4-4B24-896E-D1239C6D3FC0}
+	EndGlobalSection
+EndGlobal

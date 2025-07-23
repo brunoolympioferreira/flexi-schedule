@@ -1,0 +1,6 @@
+@FlexiSchedule.API_HostAddress = http://localhost:5280
+
+GET {{FlexiSchedule.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
