@@ -1,8 +1,4 @@
-﻿using FlexiSchedule.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-
-namespace FlexiSchedule.Infrastructure.Persistence;
+﻿namespace FlexiSchedule.Infrastructure.Persistence;
 public class FlexiScheduleSQLServerDbContext : DbContext
 {
     public FlexiScheduleSQLServerDbContext(DbContextOptions<FlexiScheduleSQLServerDbContext> options) : base(options) { }
