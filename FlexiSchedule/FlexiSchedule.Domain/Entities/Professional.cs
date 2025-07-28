@@ -1,6 +1,4 @@
-﻿using FlexiSchedule.Domain.Enums;
-
-namespace FlexiSchedule.Domain.Entities;
+﻿namespace FlexiSchedule.Domain.Entities;
 public class Professional : BaseEntity
 {
     public string Name { get; private set; }

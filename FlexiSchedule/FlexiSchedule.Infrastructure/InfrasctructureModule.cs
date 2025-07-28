@@ -1,7 +1,4 @@
-﻿using FlexiSchedule.Infrastructure.Persistence;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace FlexiSchedule.Infrastructure;
+﻿namespace FlexiSchedule.Infrastructure;
 public static class InfrasctructureModule
 {
     public static void AddInfrascructure(this IServiceCollection services)
