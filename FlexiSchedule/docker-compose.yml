@@ -1,0 +1,6 @@
+services:
+  flexischedule.api:
+    image: ${DOCKER_REGISTRY-}flexischeduleapi
+    build:
+      context: .
+      dockerfile: FlexiSchedule.API/Dockerfile
