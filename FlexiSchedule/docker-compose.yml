@@ -1,6 +1,26 @@
+version: '3.4'
+
 services:
   flexischedule.api:
     image: ${DOCKER_REGISTRY-}flexischeduleapi
     build:
       context: .
       dockerfile: FlexiSchedule.API/Dockerfile
+  sqlserver:
+    networks:
+     - app-network
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "wKO05@N605Jd"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  sql_data:
