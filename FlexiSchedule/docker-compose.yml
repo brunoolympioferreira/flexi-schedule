@@ -1,26 +1,22 @@
 version: '3.4'
 
 services:
-  flexischedule.api:
-    image: ${DOCKER_REGISTRY-}flexischeduleapi
-    build:
-      context: .
-      dockerfile: FlexiSchedule.API/Dockerfile
+  flexi-schedule-api:
+    image: flexischeduleapi:dev
+    container_name: flexi-schedule-api
+    ports:
+      - "6000:80"
+    depends_on:
+      - sqlserver
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=${DB_HOST};Database=${DB_NAME};User=${DB_USER};Password=${SA_PASSWORD};
+
   sqlserver:
-    networks:
-     - app-network
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sqlserver
     ports:
       - "1433:1433"
     environment:
-      SA_PASSWORD: "wKO05@N605Jd"
+      SA_PASSWORD: "${SA_PASSWORD}"
       ACCEPT_EULA: "Y"
-    volumes:
-      - sql_data:/var/opt/mssql
-
-networks:
-  app-network:
-    driver: bridge
-volumes:
-  sql_data:

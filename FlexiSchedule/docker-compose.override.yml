@@ -1,17 +1,11 @@
 version: '3.4'
 
 services:
-  api:
-    container_name: flexi-schedule-api
+  flexi-schedule-api:
     build:
       context: .
       dockerfile: FlexiSchedule.Api/Dockerfile
-    ports:
-      - "6000:80"
+    volumes:
+      - .:/app
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=FlexiSchedule;User=sa;Password=wKO05@N605Jd;TrustServerCertificate=True
-    command: >
-      sh -c "dotnet ef database update && dotnet FlexiSchedule.Api.dll"
-    depends_on:
-      - sqlserver
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
