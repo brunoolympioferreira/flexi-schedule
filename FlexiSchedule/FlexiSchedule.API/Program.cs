@@ -1,4 +1,6 @@
 
+using FlexiSchedule.Infrastructure;
+
 namespace FlexiSchedule.API
 {
     public class Program
@@ -10,6 +12,10 @@ namespace FlexiSchedule.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            string? connectionString = builder.Configuration.GetConnectionString("CS_SQLSERVER_FLEXI_SCHEDULE") 
+                ?? throw new NullReferenceException("ConnectionString can't be null");
+            builder.Services.AddInfrascructure(connectionString);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

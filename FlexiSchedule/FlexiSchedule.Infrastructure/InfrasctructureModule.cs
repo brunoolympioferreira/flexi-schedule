@@ -1,9 +1,9 @@
 ﻿namespace FlexiSchedule.Infrastructure;
 public static class InfrasctructureModule
 {
-    public static void AddInfrascructure(this IServiceCollection services)
+    public static void AddInfrascructure(this IServiceCollection services, string connectionString)
     {
-        string connectionString = Environment.GetEnvironmentVariable("CS_SQLSERVER_FLEXI_SCHEDULE") ?? throw new NullReferenceException();
+        //string connectionString = Environment.GetEnvironmentVariable("CS_SQLSERVER_FLEXI_SCHEDULE") ?? throw new NullReferenceException();
 
         services
             .AddDatabase(connectionString);
