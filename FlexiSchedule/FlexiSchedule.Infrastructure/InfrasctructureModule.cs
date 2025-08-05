@@ -1,13 +1,12 @@
-﻿using FlexiSchedule.Infrastructure.Persistence.Repositories;
-
-namespace FlexiSchedule.Infrastructure;
+﻿namespace FlexiSchedule.Infrastructure;
 public static class InfrasctructureModule
 {
     public static void AddInfrascructure(this IServiceCollection services, string connectionString)
     {
         services
             .AddDatabase(connectionString)
-            .AddRepositories();
+            .AddRepositories()
+            .AddUnityOfWork();
     }
 
     private static IServiceCollection AddDatabase(this IServiceCollection services, string connectionString)
@@ -26,5 +25,10 @@ public static class InfrasctructureModule
             .AddScoped<IProfessionalRepository, ProfessionalRepository>();
 
         return services;
+    }
+
+    private static IServiceCollection AddUnityOfWork(this IServiceCollection services)
+    {
+        return services.AddScoped<IUnitOfWork, UnityOfWork>();
     }
 }
