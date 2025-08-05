@@ -1,12 +1,13 @@
-﻿namespace FlexiSchedule.Infrastructure;
+﻿using FlexiSchedule.Infrastructure.Persistence.Repositories;
+
+namespace FlexiSchedule.Infrastructure;
 public static class InfrasctructureModule
 {
     public static void AddInfrascructure(this IServiceCollection services, string connectionString)
     {
-        //string connectionString = Environment.GetEnvironmentVariable("CS_SQLSERVER_FLEXI_SCHEDULE") ?? throw new NullReferenceException();
-
         services
-            .AddDatabase(connectionString);
+            .AddDatabase(connectionString)
+            .AddRepositories();
     }
 
     private static IServiceCollection AddDatabase(this IServiceCollection services, string connectionString)
@@ -15,6 +16,14 @@ public static class InfrasctructureModule
         {
             options.UseSqlServer(connectionString);
         });
+
+        return services;
+    }
+
+    private static IServiceCollection AddRepositories(this IServiceCollection services)
+    {
+        services
+            .AddScoped<IProfessionalRepository, ProfessionalRepository>();
 
         return services;
     }

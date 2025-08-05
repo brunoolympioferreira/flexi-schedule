@@ -3,3 +3,4 @@ global using Microsoft.EntityFrameworkCore;
 global using System.Reflection;
 global using FlexiSchedule.Infrastructure.Persistence;
 global using Microsoft.Extensions.DependencyInjection;
+global using FlexiSchedule.Domain.Interfaces;
