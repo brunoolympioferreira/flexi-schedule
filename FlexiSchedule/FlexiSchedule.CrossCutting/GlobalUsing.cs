@@ -1,4 +1,2 @@
-﻿namespace FlexiSchedule.CrossCutting;
-public class GlobalUsing
-{
-}
+﻿global using System.Security.Cryptography;
+global using System.Text;

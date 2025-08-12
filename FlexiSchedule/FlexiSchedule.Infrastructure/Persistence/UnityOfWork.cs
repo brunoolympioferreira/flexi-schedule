@@ -1,4 +1,4 @@
-﻿namespace FlexiSchedule.Infrastructure.Persistence.UnityOfWork;
+﻿namespace FlexiSchedule.Infrastructure.Persistence;
 public class UnityOfWork : IUnitOfWork
 {
     private readonly FlexiScheduleSQLServerDbContext _dbContext;

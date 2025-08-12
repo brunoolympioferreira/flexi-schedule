@@ -1,5 +1,6 @@
-
-using FlexiSchedule.Infrastructure;
+using FlexiSchedule.API.Filters;
+using FlexiSchedule.Application;
+using FlexiSchedule.Application.Validations.Professional;
 
 namespace FlexiSchedule.API
 {
@@ -9,14 +10,30 @@ namespace FlexiSchedule.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.AddValidatorsFromAssemblyContaining<ProfessionalInputModelValidator>();
+            builder.Services.AddScoped<ValidationFilter>();
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(options =>
+            {
+                options.Filters.AddService<ValidationFilter>();
+            });
 
-            string? connectionString = builder.Configuration.GetConnectionString("CS_SQLSERVER_FLEXI_SCHEDULE") 
-                ?? throw new NullReferenceException("ConnectionString can't be null");
+            var dbHost = Environment.GetEnvironmentVariable("DB_HOST")
+             ?? builder.Configuration["DatabaseConfig:Host"];
+            var dbPort = Environment.GetEnvironmentVariable("DB_PORT")
+                         ?? builder.Configuration["DatabaseConfig:Port"];
+            var dbName = Environment.GetEnvironmentVariable("DB_NAME")
+                         ?? builder.Configuration["DatabaseConfig:Name"];
+            var dbUser = Environment.GetEnvironmentVariable("DB_USER")
+                         ?? builder.Configuration["DatabaseConfig:User"];
+            var dbPass = Environment.GetEnvironmentVariable("DB_PASSWORD")
+                         ?? builder.Configuration["DatabaseConfig:Password"];
+
+            var connectionString = $"Server={dbHost},{dbPort};Database={dbName};User Id={dbUser};Password={dbPass};TrustServerCertificate=True;";
+
             builder.Services.AddInfrascructure(connectionString);
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddApplication();
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 

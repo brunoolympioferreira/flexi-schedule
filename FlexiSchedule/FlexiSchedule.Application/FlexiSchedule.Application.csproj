@@ -11,4 +11,31 @@
     <ProjectReference Include="..\FlexiSchedule.Domain\FlexiSchedule.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\DTOs\" />
+    <Folder Include="Models\ViewModels\" />
+    <Folder Include="Services\Professional\ReadOnly\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Dev\flexi-schedule\FlexiSchedule\FlexiSchedule.Application\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Dev\flexi-schedule\FlexiSchedule\FlexiSchedule.Application\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Dev\flexi-schedule\FlexiSchedule\FlexiSchedule.Application\.editorconfig" />
+  </ItemGroup>
+
 </Project>

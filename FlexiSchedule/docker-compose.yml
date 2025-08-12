@@ -5,12 +5,16 @@ services:
     image: flexischeduleapi:dev
     container_name: flexi-schedule-api
     ports:
-      - "6000:80"
+      - "6000:8080"
+      - "6060:8081"
     depends_on:
       - sqlserver
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=${DB_HOST};Database=${DB_NAME};User=${DB_USER};Password=${SA_PASSWORD};
+      DB_HOST: sqlserver
+      DB_PORT: 1433
+      DB_NAME: FlexiSchedule
+      DB_USER: sa
+      DB_PASSWORD: ${SA_PASSWORD}
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -20,3 +24,8 @@ services:
     environment:
       SA_PASSWORD: "${SA_PASSWORD}"
       ACCEPT_EULA: "Y"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+volumes:
+    sqlserver-data:

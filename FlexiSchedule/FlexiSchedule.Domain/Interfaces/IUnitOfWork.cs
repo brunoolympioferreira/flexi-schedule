@@ -1,4 +1,4 @@
-﻿namespace FlexiSchedule.Infrastructure.Persistence.UnityOfWork;
+﻿namespace FlexiSchedule.Domain.Interfaces;
 public interface IUnitOfWork : IDisposable
 {
     IProfessionalRepository Professionals { get; }

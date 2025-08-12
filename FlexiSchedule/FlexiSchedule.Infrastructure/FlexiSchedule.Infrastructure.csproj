@@ -25,4 +25,8 @@
     <ProjectReference Include="..\FlexiSchedule.Domain\FlexiSchedule.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\UnityOfWork\" />
+  </ItemGroup>
+
 </Project>
