@@ -1,6 +1,4 @@
-﻿using FlexiSchedule.Domain.Interfaces;
-
-namespace FlexiSchedule.Domain.Validators;
+﻿namespace FlexiSchedule.Domain.Validators;
 public class ProfessionalValidator(IProfessionalRepository repository)
 {
     public async Task ValidateUniqueAsync(Professional professional, CancellationToken cancellationToken)
