@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FlexiSchedule.Application\FlexiSchedule.Application.csproj" />
     <ProjectReference Include="..\FlexiSchedule.CrossCutting\FlexiSchedule.CrossCutting.csproj" />
+    <ProjectReference Include="..\FlexiSchedule.Domain\FlexiSchedule.Domain.csproj" />
     <ProjectReference Include="..\FlexiSchedule.Infrastructure\FlexiSchedule.Infrastructure.csproj" />
   </ItemGroup>
 

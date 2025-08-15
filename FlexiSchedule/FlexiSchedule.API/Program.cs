@@ -1,7 +1,3 @@
-using FlexiSchedule.API.Filters;
-using FlexiSchedule.Application;
-using FlexiSchedule.Application.Validations.Professional;
-
 namespace FlexiSchedule.API
 {
     public class Program
@@ -34,10 +30,14 @@ namespace FlexiSchedule.API
             builder.Services.AddInfrascructure(connectionString);
             builder.Services.AddApplication();
 
+            builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            app.UseExceptionHandler(options => { });
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
