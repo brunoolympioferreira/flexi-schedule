@@ -4,12 +4,12 @@ public class ProfessionalRepository(FlexiScheduleSQLServerDbContext dbContext)
 {
     public void Add(Professional professional)
     {
-        dbContext.Professionals.Add(professional);
+        dbContext.Add(professional);
     }
 
     public void Update(Professional professional)
     {
-        throw new NotImplementedException();
+        dbContext.Update(professional);
     }
 
     public void Remove(Professional professional)
@@ -35,9 +35,13 @@ public class ProfessionalRepository(FlexiScheduleSQLServerDbContext dbContext)
         return existEmail;
     }
 
-    public Task<Professional?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<Professional?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        Professional? professional = await dbContext.Professionals
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
+
+        return professional;
     }
 
     public Task<IEnumerable<Professional>> GetAllAsync(CancellationToken cancellationToken = default)

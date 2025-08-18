@@ -8,6 +8,11 @@ public class BaseEntity
     public BaseEntity()
     {
         Id = new Guid();
-        CreatedAt = DateTime.UtcNow;
+        CreatedAt = DateTime.Now;
+    }
+
+    public void SetUpdatedAt()
+    {
+        UpdatedAt = DateTime.Now;
     }
 }

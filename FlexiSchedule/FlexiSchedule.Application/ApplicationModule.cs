@@ -1,4 +1,5 @@
-﻿using FlexiSchedule.Domain.Validators;
+﻿using FlexiSchedule.Application.Services.Professional.WriteOnly.Update;
+using FlexiSchedule.Domain.Validators;
 
 namespace FlexiSchedule.Application;
 public static class ApplicationModule
@@ -13,7 +14,8 @@ public static class ApplicationModule
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
         services
-            .AddScoped<ICreateProfessionalService, CreateProfessionalService>();
+            .AddScoped<ICreateProfessionalService, CreateProfessionalService>()
+            .AddScoped<IUpdateProfessionalService, UpdateProfessionalService>();
         return services;
     }
 

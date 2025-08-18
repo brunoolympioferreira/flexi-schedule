@@ -6,7 +6,7 @@ namespace FlexiSchedule.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddValidatorsFromAssemblyContaining<ProfessionalInputModelValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<ProfessionalCreateInputModelValidator>();
             builder.Services.AddScoped<ValidationFilter>();
 
             builder.Services.AddControllers(options =>

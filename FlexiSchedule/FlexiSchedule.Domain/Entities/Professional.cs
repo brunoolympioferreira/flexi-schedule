@@ -19,4 +19,15 @@ public class Professional : BaseEntity
         PasswordHash = passwordHash;
         Phone = phone;
     }
+
+    public void Update(string company, DocumentTypeEnum documentType, string document, string email, string passwordHash, string phone)
+    {
+        Company = company;
+        DocumentType = documentType;
+        Document = document;
+        Email = email;
+        PasswordHash = passwordHash;
+        Phone = phone;
+        SetUpdatedAt();
+    }
 }

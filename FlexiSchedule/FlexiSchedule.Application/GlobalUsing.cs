@@ -6,3 +6,4 @@ global using FluentValidation;
 global using FlexiSchedule.Application.Services.Professional.WriteOnly.Create;
 global using Microsoft.Extensions.DependencyInjection;
 global using FlexiSchedule.Domain.Validators;
+global using FlexiSchedule.Domain.Entities;

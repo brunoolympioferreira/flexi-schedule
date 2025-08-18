@@ -1,8 +1,5 @@
-﻿using FlexiSchedule.Domain.Entities;
-using FlexiSchedule.Domain.Enums;
-
-namespace FlexiSchedule.Application.Models.InputModels;
-public record ProfessionalInputModel(
+﻿namespace FlexiSchedule.Application.Models.InputModels;
+public record ProfessionalCreateInputModel(
     string Name,
     string Company,
     string DocumentType,

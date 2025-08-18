@@ -1,7 +1,7 @@
 ﻿namespace FlexiSchedule.Application.Services.Professional.WriteOnly.Create;
 public class CreateProfessionalService(IUnitOfWork unitOfWork, ProfessionalValidator validator) : ICreateProfessionalService
 {
-    public async Task CreateAsync(ProfessionalInputModel inputModel, CancellationToken cancellationToken = default)
+    public async Task CreateAsync(ProfessionalCreateInputModel inputModel, CancellationToken cancellationToken = default)
     {
         string passwordHash = PasswordHasher.HashPassword(inputModel.Password);
         DocumentTypeEnum documentType = (DocumentTypeEnum)Enum.Parse(typeof(DocumentTypeEnum), inputModel.DocumentType);

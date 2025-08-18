@@ -1,12 +1,8 @@
 ﻿namespace FlexiSchedule.Application.Validations.Professional;
-public class ProfessionalInputModelValidator : AbstractValidator<ProfessionalInputModel>
+public class ProfessionalUpdateInputModelValidator : AbstractValidator<ProfessionalUpdateInputModel>
 {
-    public ProfessionalInputModelValidator()
+    public ProfessionalUpdateInputModelValidator()
     {
-        RuleFor(p => p.Name)
-            .NotNull().WithMessage("Property Name can't be null")
-            .NotEmpty().WithMessage("Property Name can't be empty");
-
         RuleFor(p => p.Company)
             .NotNull().WithMessage("Property Company can't be null")
             .NotEmpty().WithMessage("Property Company can't be empty");
