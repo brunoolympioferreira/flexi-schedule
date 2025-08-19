@@ -14,7 +14,7 @@ public class ProfessionalRepository(FlexiScheduleSQLServerDbContext dbContext)
 
     public void Remove(Professional professional)
     {
-        throw new NotImplementedException();
+        dbContext.Remove(professional);
     }
 
     public async Task<bool> GetByDocumentAsync(string document, Guid id, CancellationToken cancellationToken = default)

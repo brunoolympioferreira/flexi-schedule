@@ -29,4 +29,13 @@ public class ProfessionalsController : ControllerBase
         var professionals = await service.GetAllAsync(cancellationToken);
         return Ok(professionals);
     }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Remove(
+        [FromServices] IRemoveProfessionalService service, Guid id, CancellationToken cancellationToken)
+    {
+        await service.RemoveAsync(id, cancellationToken);
+
+        return NoContent();
+    }
 }
