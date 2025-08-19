@@ -1,6 +1,4 @@
-﻿using FlexiSchedule.Application.Services.Professional.WriteOnly.Update;
-
-namespace FlexiSchedule.API.Controllers;
+﻿namespace FlexiSchedule.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class ProfessionalsController : ControllerBase
@@ -22,5 +20,13 @@ public class ProfessionalsController : ControllerBase
     {
         await service.UpdateAsync(inputModel, id, cancellationToken);
         return NoContent();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll(
+        [FromServices] IProfessionalReadOnlyService service, CancellationToken cancellationToken)
+    {
+        var professionals = await service.GetAllAsync(cancellationToken);
+        return Ok(professionals);
     }
 }

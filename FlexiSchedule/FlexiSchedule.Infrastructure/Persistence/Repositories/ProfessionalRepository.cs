@@ -44,8 +44,12 @@ public class ProfessionalRepository(FlexiScheduleSQLServerDbContext dbContext)
         return professional;
     }
 
-    public Task<IEnumerable<Professional>> GetAllAsync(CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Professional>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var professionals = await dbContext.Professionals
+            .AsNoTracking()
+            .ToListAsync(cancellationToken);
+
+        return professionals;
     }
 }

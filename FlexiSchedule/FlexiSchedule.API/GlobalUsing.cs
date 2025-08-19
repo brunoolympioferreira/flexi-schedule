@@ -11,3 +11,5 @@ global using FlexiSchedule.API.Filters;
 global using FlexiSchedule.API.Handlers;
 global using FlexiSchedule.Application;
 global using FlexiSchedule.Application.Validations.Professional;
+global using FlexiSchedule.Application.Services.Professional.ReadOnly;
+global using FlexiSchedule.Application.Services.Professional.WriteOnly.Update;
