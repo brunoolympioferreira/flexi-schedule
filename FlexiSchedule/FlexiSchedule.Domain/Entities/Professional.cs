@@ -8,8 +8,14 @@ public class Professional : BaseEntity
     public string Email { get; private set; }
     public string PasswordHash { get; private set; }
     public string Phone { get; private set; }
-    public IEnumerable<RefreshToken> RefreshTokens { get; private set; } = [];
+    public IEnumerable<RefreshToken> RefreshTokens { get; private set; }
 
+
+    // EF Core
+    public Professional()
+    {
+        
+    }
     public Professional(string name, string company, DocumentTypeEnum documentType, string document, string email, string passwordHash, string phone, IEnumerable<RefreshToken> refreshTokens)
     {
         Name = name;

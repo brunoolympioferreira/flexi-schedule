@@ -7,10 +7,11 @@ public class RefreshToken : BaseEntity
     public bool IsExpired { get; private set; }
     public bool IsRevoked { get; private set; }
     public bool IsActive { get; private set; }
-    public int ProfessionalId { get; private set; }
+    public Guid ProfessionalId { get; private set; }
     public Professional Professional { get; set; } = null!;
 
-    public RefreshToken(string token, DateTime expireAt, DateTime? revokedAt, int professionalId)
+
+    public RefreshToken(string token, DateTime expireAt, DateTime? revokedAt, Guid professionalId)
     {
         Token = token;
         ExpireAt = expireAt;

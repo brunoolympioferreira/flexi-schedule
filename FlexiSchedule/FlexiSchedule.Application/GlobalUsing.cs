@@ -10,3 +10,4 @@ global using FlexiSchedule.Domain.Entities;
 global using FlexiSchedule.Application.Services.Professional.ReadOnly;
 global using FlexiSchedule.Application.Services.Professional.WriteOnly.Update;
 global using FlexiSchedule.Application.Models.ViewModels;
+global using FlexiSchedule.Application.Models.DTOs;

@@ -15,5 +15,6 @@ public record ProfessionalCreateInputModel(
         Document,
         Email,
         passwordHash,
-        Phone);
+        Phone,
+        []);
 }
