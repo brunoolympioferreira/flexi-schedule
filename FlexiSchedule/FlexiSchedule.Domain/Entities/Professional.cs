@@ -8,8 +8,9 @@ public class Professional : BaseEntity
     public string Email { get; private set; }
     public string PasswordHash { get; private set; }
     public string Phone { get; private set; }
+    public IEnumerable<RefreshToken> RefreshTokens { get; private set; } = [];
 
-    public Professional(string name, string company, DocumentTypeEnum documentType, string document, string email, string passwordHash, string phone)
+    public Professional(string name, string company, DocumentTypeEnum documentType, string document, string email, string passwordHash, string phone, IEnumerable<RefreshToken> refreshTokens)
     {
         Name = name;
         Company = company;
@@ -18,6 +19,7 @@ public class Professional : BaseEntity
         Email = email;
         PasswordHash = passwordHash;
         Phone = phone;
+        RefreshTokens = refreshTokens;
     }
 
     public void Update(string company, DocumentTypeEnum documentType, string document, string email, string passwordHash, string phone)
