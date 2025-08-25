@@ -22,7 +22,8 @@ public static class InfrasctructureModule
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services
-            .AddScoped<IProfessionalRepository, ProfessionalRepository>();
+            .AddScoped<IProfessionalRepository, ProfessionalRepository>()
+            .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
         return services;
     }
