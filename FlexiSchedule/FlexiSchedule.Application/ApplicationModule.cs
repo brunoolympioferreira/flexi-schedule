@@ -1,4 +1,5 @@
-﻿using FlexiSchedule.Application.Services.Professional.WriteOnly.Remove;
+﻿using FlexiSchedule.Application.Services.Authentication;
+using FlexiSchedule.Application.Services.Professional.WriteOnly.Remove;
 
 namespace FlexiSchedule.Application;
 public static class ApplicationModule
@@ -7,7 +8,8 @@ public static class ApplicationModule
     {
         services
             .AddServices()
-            .AddValidators();
+            .AddValidators()
+            .AddAuthServices();
     }
 
     private static IServiceCollection AddServices(this IServiceCollection services)
@@ -24,6 +26,14 @@ public static class ApplicationModule
     {
         services
             .AddScoped<ProfessionalValidator>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddAuthServices(this IServiceCollection services)
+    {
+        services
+            .AddScoped<IJwtService, JwtService>();
 
         return services;
     }
