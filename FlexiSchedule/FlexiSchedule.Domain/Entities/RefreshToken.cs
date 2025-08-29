@@ -21,4 +21,6 @@ public class RefreshToken : BaseEntity
         IsActive = !IsRevoked && !IsExpired;
         ProfessionalId = professionalId;
     }
+
+    public static void Revoke(RefreshToken refreshToken) => refreshToken.RevokedAt = DateTime.UtcNow;
 }

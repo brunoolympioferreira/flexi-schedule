@@ -37,7 +37,7 @@ public class RefreshTokenRepository(FlexiScheduleSQLServerDbContext dbContext) :
         await dbContext.RefreshTokens.AddAsync(refreshToken, cancellationToken);
     }
 
-    public Task UpdateAsync(RefreshToken refreshToken)
+    public Task UpdateAsync(RefreshToken refreshToken, CancellationToken cancellationToken = default)
     {
         dbContext.RefreshTokens.Update(refreshToken);
 

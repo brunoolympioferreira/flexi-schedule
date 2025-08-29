@@ -4,12 +4,14 @@ public class UnityOfWork : IUnitOfWork
     private readonly FlexiScheduleSQLServerDbContext _dbContext;
 
     public IProfessionalRepository Professionals { get; }
+    public IRefreshTokenRepository RefreshTokens { get; }
 
     public UnityOfWork(FlexiScheduleSQLServerDbContext dbContext)
     {
         _dbContext = dbContext;
 
         Professionals = new ProfessionalRepository(_dbContext);
+        RefreshTokens = new RefreshTokenRepository(_dbContext);
     }
 
     public async Task<int> CommitAsync(CancellationToken cancellationToken = default)

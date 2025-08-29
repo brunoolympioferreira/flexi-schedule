@@ -7,5 +7,6 @@ public interface IProfessionalRepository
     Task<Professional?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task<IEnumerable<Professional>> GetAllAsync(CancellationToken cancellationToken = default);
     Task<bool> GetByDocumentAsync(string document, Guid id, CancellationToken cancellationToken = default);
-    Task<bool> GetByEmailAsync(string email,Guid id, CancellationToken cancellationToken = default);
+    Task<Professional?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
+    Task<bool> VerifyEmailAsync(string email, CancellationToken cancellationToken = default);
 }

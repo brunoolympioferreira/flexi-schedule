@@ -40,6 +40,12 @@ public class CustomExceptionHandler(ILogger<CustomExceptionHandler> logger) : IE
                 exception.GetType().Name,
                 context.Response.StatusCode = StatusCodes.Status422UnprocessableEntity
             ),
+            CrossCutting.Exceptions.UnauthorizedAccessException unauthorizedAccessException =>
+            (
+                unauthorizedAccessException.Details ?? unauthorizedAccessException.Message,
+                unauthorizedAccessException.GetType().Name,
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized
+            ),
             _ =>
             (
                 exception.Message,

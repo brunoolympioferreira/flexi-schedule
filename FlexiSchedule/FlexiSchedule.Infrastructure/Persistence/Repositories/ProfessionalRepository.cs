@@ -26,11 +26,11 @@ public class ProfessionalRepository(FlexiScheduleSQLServerDbContext dbContext)
         return existProfessional;
     }
 
-    public async Task<bool> GetByEmailAsync(string email, Guid id, CancellationToken cancellationToken = default)
+    public async Task<bool> VerifyEmailAsync(string email, CancellationToken cancellationToken = default)
     {
         bool existEmail = await dbContext.Professionals
             .AsNoTracking()
-            .AnyAsync(p => p.Email.Equals(email) && p.Id != id, cancellationToken);
+            .AnyAsync(p => p.Email.Equals(email), cancellationToken);
 
         return existEmail;
     }
@@ -40,6 +40,15 @@ public class ProfessionalRepository(FlexiScheduleSQLServerDbContext dbContext)
         Professional? professional = await dbContext.Professionals
             .AsNoTracking()
             .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
+
+        return professional;
+    }
+
+    public async Task<Professional?> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
+    {
+        Professional? professional = await dbContext.Professionals
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.Email.Equals(email), cancellationToken);
 
         return professional;
     }

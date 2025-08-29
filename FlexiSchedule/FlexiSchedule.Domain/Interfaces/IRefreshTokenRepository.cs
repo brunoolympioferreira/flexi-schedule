@@ -6,7 +6,7 @@ public interface IRefreshTokenRepository
     Task<List<RefreshToken>> GetExpiredTokensAsync(CancellationToken cancellationToken = default);
     Task<List<RefreshToken>> GetActiveTokensByProfessionalIdAsync(Guid professionalId, CancellationToken cancellationToken = default);
     Task AddAsync(RefreshToken refreshToken, CancellationToken cancellationToken = default);
-    Task UpdateAsync(RefreshToken refreshToken);
-    Task DeleteAsync(RefreshToken refreshToken);
-    Task DeleteRangeAsync(IEnumerable<RefreshToken> refreshTokens);
+    Task UpdateAsync(RefreshToken refreshToken, CancellationToken cancellationToken = default);
+    Task DeleteAsync(RefreshToken refreshToken, CancellationToken cancellationToken = default);
+    Task DeleteRangeAsync(IEnumerable<RefreshToken> refreshTokens, CancellationToken cancellation = default);
 }

@@ -6,7 +6,7 @@ public class ProfessionalValidator(IProfessionalRepository repository)
         if (await repository.GetByDocumentAsync(professional.Document, professional.Id, cancellationToken))
             throw new InvalidProfessionalDocumentException("Professional with the same document already exists.");
 
-        if (await repository.GetByEmailAsync(professional.Email, professional.Id, cancellationToken))
+        if (await repository.VerifyEmailAsync(professional.Email, cancellationToken))
             throw new InvalidProfessionalDocumentException("Professional with the same email already exists.");
     }
 }
