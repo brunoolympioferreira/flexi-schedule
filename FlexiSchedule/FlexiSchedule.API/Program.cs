@@ -1,3 +1,9 @@
+using FlexiSchedule.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 namespace FlexiSchedule.API
 {
     public class Program
@@ -14,6 +20,7 @@ namespace FlexiSchedule.API
                 options.Filters.AddService<ValidationFilter>();
             });
 
+            // Database configuration
             var dbHost = Environment.GetEnvironmentVariable("DB_HOST")
              ?? builder.Configuration["DatabaseConfig:Host"];
             var dbPort = Environment.GetEnvironmentVariable("DB_PORT")
@@ -30,12 +37,87 @@ namespace FlexiSchedule.API
             builder.Services.AddInfrascructure(connectionString);
             builder.Services.AddApplication();
 
+            // JWT Configuration
+            var isDocker = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("DB_HOST"));
+
+            var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
+                ?? builder.Configuration["Jwt:Key"]
+                ?? throw new InvalidOperationException("JWT Key não configurada");
+
+            var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER")
+                ?? builder.Configuration["Jwt:Issuer"]
+                ?? "FlexiScheduleSystem";
+
+            var jwtAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE")
+                ?? builder.Configuration["Jwt:Audience"]
+                ?? "FlexiScheduleSystem";
+
+            // JWT Authentication
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+                        ValidateIssuer = true,
+                        ValidIssuer = jwtIssuer,
+                        ValidateAudience = true,
+                        ValidAudience = jwtAudience,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero
+                    };
+
+                });
+
             builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+                {
+                    {
+                        new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                        {
+                            Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                            {
+                                Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+            });
 
             var app = builder.Build();
+
+            // Apply Migrations if is Docker
+            if (isDocker)
+            {
+                using var scope = app.Services.CreateScope();
+                var context = scope.ServiceProvider.GetRequiredService<FlexiScheduleSQLServerDbContext>();
+                try
+                {
+                    context.Database.Migrate();
+                    app.Logger.LogInformation("Database migration completed successfully (Docker environment)");
+                }
+                catch (Exception ex)
+                {
+                    app.Logger.LogError(ex, "An error occurred while migrating the database");
+                    throw;
+                }
+            }
 
             app.UseExceptionHandler(options => { });
 
@@ -47,11 +129,18 @@ namespace FlexiSchedule.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
-
             app.MapControllers();
+
+            // Health check endpoint
+            app.MapGet("/health", () => Results.Ok(new
+            {
+                Status = "Healthy",
+                Timestamp = DateTime.UtcNow,
+                Environment = app.Environment.EnvironmentName,
+                Database = isDocker ? "Docker" : "Local"
+            }));
 
             app.Run();
         }

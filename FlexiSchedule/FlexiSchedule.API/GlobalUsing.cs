@@ -14,3 +14,4 @@ global using FlexiSchedule.Application.Validations.Professional;
 global using FlexiSchedule.Application.Services.Professional.ReadOnly;
 global using FlexiSchedule.Application.Services.Professional.WriteOnly.Update;
 global using FlexiSchedule.Application.Services.Professional.WriteOnly.Remove;
+global using FlexiSchedule.Application.Services.Authentication;

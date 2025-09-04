@@ -44,14 +44,14 @@ public class RefreshTokenRepository(FlexiScheduleSQLServerDbContext dbContext) :
         return Task.CompletedTask;
     }
 
-    public Task DeleteAsync(RefreshToken refreshToken)
+    public Task DeleteAsync(RefreshToken refreshToken, CancellationToken cancellationToken = default)
     {
         dbContext.RefreshTokens.Remove(refreshToken);
 
         return Task.CompletedTask;
     }
 
-    public Task DeleteRangeAsync(IEnumerable<RefreshToken> refreshTokens)
+    public Task DeleteRangeAsync(IEnumerable<RefreshToken> refreshTokens, CancellationToken cancellationToken = default)
     {
         dbContext.RefreshTokens.RemoveRange(refreshTokens);
 
