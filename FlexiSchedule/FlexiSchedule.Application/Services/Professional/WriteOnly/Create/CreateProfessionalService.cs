@@ -3,7 +3,7 @@ public class CreateProfessionalService(IUnitOfWork unitOfWork, ProfessionalValid
 {
     public async Task CreateAsync(ProfessionalCreateInputModel inputModel, CancellationToken cancellationToken = default)
     {
-        string passwordHash = PasswordHasher.HashPassword(inputModel.Password);
+        string passwordHash = BCrypt.Net.BCrypt.HashPassword(inputModel.Password, BCrypt.Net.BCrypt.GenerateSalt(12));
         DocumentTypeEnum documentType = (DocumentTypeEnum)Enum.Parse(typeof(DocumentTypeEnum), inputModel.DocumentType);
 
         var professional = inputModel.ToEntity(passwordHash, documentType);

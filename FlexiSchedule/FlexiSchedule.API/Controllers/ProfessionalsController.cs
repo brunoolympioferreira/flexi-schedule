@@ -1,9 +1,11 @@
 ﻿namespace FlexiSchedule.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ProfessionalsController : ControllerBase
 {
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> Create(
         [FromServices] ICreateProfessionalService service,
         [FromBody] ProfessionalCreateInputModel inputModel, CancellationToken cancellationToken)

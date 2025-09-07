@@ -10,11 +10,18 @@ services:
     depends_on:
       - sqlserver
     environment:
+      # Database Configuration
       DB_HOST: sqlserver
       DB_PORT: 1433
       DB_NAME: FlexiSchedule
       DB_USER: sa
       DB_PASSWORD: ${SA_PASSWORD}
+
+      # JWT Configuration
+      JWT_KEY: ${JWT_SECRET_KEY}
+      JWT_ISSUER: "FlexiScheduleSystem"
+      JWT_AUDIENCE: "FlexiScheduleSystem"
+      JWT_ACCESS_TOKEN_EXPIRY_MINUTES: 15
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -26,6 +33,12 @@ services:
       ACCEPT_EULA: "Y"
     volumes:
       - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "${SA_PASSWORD}" -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
 volumes:
     sqlserver-data:

@@ -1,9 +1,3 @@
-using FlexiSchedule.Infrastructure.Persistence;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-
 namespace FlexiSchedule.API
 {
     public class Program
