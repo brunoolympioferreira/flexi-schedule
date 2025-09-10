@@ -5,6 +5,7 @@ public class RefreshTokenRepository(FlexiScheduleSQLServerDbContext dbContext) :
     {
         return await dbContext.RefreshTokens
             .AsNoTracking()
+            .Include(p => p.Professional)
             .FirstOrDefaultAsync(rt => rt.Token == token, cancellationToken);
     }
 
