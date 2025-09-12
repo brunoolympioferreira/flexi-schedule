@@ -11,8 +11,8 @@ public class Address : BaseEntity
     public string Complement { get; private set; }
 
     //relationships
-    public Guid ClientId { get; private set; }
-
+    public Guid ClientId { get; private set; } // Foreign key
+    public Client? Client { get; set; } // Navigation property
     public Address(string street, int number, string district, string city, string state, string country, 
         string zipCode, string complement, Guid clientId)
     {
