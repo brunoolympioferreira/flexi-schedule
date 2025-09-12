@@ -23,7 +23,8 @@ public static class InfrasctructureModule
     {
         services
             .AddScoped<IProfessionalRepository, ProfessionalRepository>()
-            .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
+            .AddScoped<IAddressRepository, AddressRepository>();
 
         return services;
     }
