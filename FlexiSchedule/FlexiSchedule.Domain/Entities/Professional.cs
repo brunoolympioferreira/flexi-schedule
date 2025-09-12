@@ -10,6 +10,8 @@ public class Professional : BaseEntity
     public string Phone { get; private set; }
     public IEnumerable<RefreshToken> RefreshTokens { get; private set; }
 
+    public ICollection<Client> Clients { get; set; } = [];
+
 
     // EF Core
     public Professional()

@@ -22,5 +22,11 @@ public class ClientConfiguration : IEntityTypeConfiguration<Client>
             .HasForeignKey(a => a.ClientId)
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(c => c.Professional)
+            .WithMany(p => p.Clients)
+            .HasForeignKey(c => c.ProfessionalId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
