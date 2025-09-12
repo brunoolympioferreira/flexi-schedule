@@ -7,7 +7,7 @@ public class Client : BaseEntity
 
     //relationships
     public Guid ProfessionalId { get; private set; }
-    public virtual Address? Address { get; private set; }
+    public ICollection<Address> Addresses { get; private set; } = [];
 
     public Client(string name, string email, string phone, Guid professionalId)
     {
@@ -15,5 +15,10 @@ public class Client : BaseEntity
         Email = email;
         Phone = phone;
         ProfessionalId = professionalId;
+    }
+
+    public void AddAdress(Address address)
+    {
+        Addresses.Add(address);
     }
 }

@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace FlexiSchedule.Infrastructure.Persistence.Configurations;
+﻿namespace FlexiSchedule.Infrastructure.Persistence.Configurations;
 
 [Table("Professionals")]
 public class ProfessionalConfiguration : IEntityTypeConfiguration<Professional>

@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace FlexiSchedule.Infrastructure.Persistence.Configurations;
+﻿namespace FlexiSchedule.Infrastructure.Persistence.Configurations;
 public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
 {
     public void Configure(EntityTypeBuilder<RefreshToken> builder)
