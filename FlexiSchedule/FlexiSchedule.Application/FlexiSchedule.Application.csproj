@@ -37,4 +37,8 @@
     <EditorConfigFiles Remove="C:\Dev\flexi-schedule\FlexiSchedule\FlexiSchedule.Application\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Address\ReadOnly\" />
+  </ItemGroup>
+
 </Project>
