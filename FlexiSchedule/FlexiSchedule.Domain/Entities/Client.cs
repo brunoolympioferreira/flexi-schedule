@@ -7,7 +7,7 @@ public class Client : BaseEntity
 
     //relationships
     public Guid ProfessionalId { get; private set; }
-    public virtual Professional Professional { get; set; }
+    public virtual Professional? Professional { get; set; }
     public ICollection<Address> Addresses { get; private set; } = [];
 
     public Client(string name, string email, string phone, Guid professionalId)

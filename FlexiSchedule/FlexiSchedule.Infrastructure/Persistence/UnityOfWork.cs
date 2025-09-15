@@ -6,6 +6,7 @@ public class UnityOfWork : IUnitOfWork
     public IProfessionalRepository Professionals { get; }
     public IRefreshTokenRepository RefreshTokens { get; }
     public IAddressRepository Addresses { get; }
+    public IClientRepository Clients { get; }
 
     public UnityOfWork(FlexiScheduleSQLServerDbContext dbContext)
     {
@@ -14,6 +15,7 @@ public class UnityOfWork : IUnitOfWork
         Professionals = new ProfessionalRepository(_dbContext);
         RefreshTokens = new RefreshTokenRepository(_dbContext);
         Addresses = new AddressRepository(_dbContext);
+        Clients = new ClientRepository(_dbContext);
     }
 
     public async Task<int> CommitAsync(CancellationToken cancellationToken = default)

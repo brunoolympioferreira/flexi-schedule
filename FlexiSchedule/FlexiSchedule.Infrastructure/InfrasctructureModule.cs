@@ -24,7 +24,8 @@ public static class InfrasctructureModule
         services
             .AddScoped<IProfessionalRepository, ProfessionalRepository>()
             .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
-            .AddScoped<IAddressRepository, AddressRepository>();
+            .AddScoped<IAddressRepository, AddressRepository>()
+            .AddScoped<IClientRepository, ClientRepository>();
 
         return services;
     }
