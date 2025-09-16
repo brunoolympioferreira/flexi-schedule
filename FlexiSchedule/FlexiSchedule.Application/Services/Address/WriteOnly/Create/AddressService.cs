@@ -7,8 +7,6 @@ public class AddressService(IUnitOfWork unitOfWork) : IAddressService
 
         await unitOfWork.Addresses.AddAsync(address, cancellationToken);
 
-        await unitOfWork.CommitAsync(cancellationToken);
-
         return address.Id;
     }
 }

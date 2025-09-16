@@ -32,8 +32,5 @@ public class AddressCreateDTOValidator : AbstractValidator<AddressDTO>
 
         RuleFor(a => a.Complement)
             .MaximumLength(100).WithMessage("Complement must not exceed 100 characters.");
-
-        RuleFor(a => a.ClientId)
-            .NotEmpty().WithMessage("ClientId is required.");
     }
 }

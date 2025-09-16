@@ -2,7 +2,7 @@
 public record CreateClientInputModel(
     string Name, 
     string Email, 
-    string Phone, 
+    string Phone,
     Guid ProfessionalId, 
     ICollection<AddressDTO> Adresses
     )

@@ -5,16 +5,18 @@ public class CreateClientService(IUnitOfWork unitOfWork, IAddressService address
 {
     public async Task<Guid> CreateAsync(CreateClientInputModel model, CancellationToken cancellationToken)
     {
+        // -> Validar se o ProfessionalId existe
+
         var client = model.ToEntity();
 
         await unitOfWork.Clients.AddAsync(client, cancellationToken);
-        await unitOfWork.CommitAsync(cancellationToken);
 
         foreach (var addressDto in model.Adresses)
         {
             await addressService.CreateAddressAsync(addressDto, client.Id, cancellationToken);
         }
 
+        await unitOfWork.CommitAsync(cancellationToken);
         return client.Id;
     }
 }
