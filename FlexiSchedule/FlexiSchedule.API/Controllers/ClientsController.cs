@@ -1,0 +1,17 @@
+﻿
+namespace FlexiSchedule.API.Controllers;
+[Route("api/[controller]")]
+[ApiController]
+[Authorize]
+public class ClientsController : ControllerBase
+{
+    [HttpPost]
+    public async Task<IActionResult> Create(
+        [FromServices] ICreateClientService clientService, 
+        [FromBody] CreateClientInputModel model)
+    {
+        var clientId = await clientService.CreateAsync(model, CancellationToken.None);
+
+        return CreatedAtAction(nameof(Create), new { id = clientId }, null);
+    }
+}
