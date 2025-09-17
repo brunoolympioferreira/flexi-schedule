@@ -21,3 +21,4 @@ global using System.Security.Cryptography;
 global using System.Text;
 global using FlexiSchedule.Application.Services.Authentication;
 global using FlexiSchedule.Application.Services.Professional.WriteOnly.Remove;
+global using FlexiSchedule.Application.Services.Address.WriteOnly.Create;

@@ -35,6 +35,15 @@ public class ProfessionalRepository(FlexiScheduleSQLServerDbContext dbContext)
         return existEmail;
     }
 
+    public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        bool exist = await dbContext.Professionals
+            .AsNoTracking()
+            .AnyAsync(p => p.Id == id, cancellationToken);
+
+        return exist;
+    }
+
     public async Task<Professional?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         Professional? professional = await dbContext.Professionals

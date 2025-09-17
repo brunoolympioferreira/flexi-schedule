@@ -1,11 +1,12 @@
-﻿using FlexiSchedule.Application.Services.Address.WriteOnly.Create;
-
-namespace FlexiSchedule.Application.Services.Client.WriteOnly.Create;
+﻿namespace FlexiSchedule.Application.Services.Client.WriteOnly.Create;
 public class CreateClientService(IUnitOfWork unitOfWork, IAddressService addressService) : ICreateClientService
 {
     public async Task<Guid> CreateAsync(CreateClientInputModel model, CancellationToken cancellationToken)
     {
-        // -> Validar se o ProfessionalId existe
+        bool existsProfessional = await unitOfWork.Professionals.ExistsAsync(model.ProfessionalId, cancellationToken);
+
+        if (!existsProfessional)
+            throw new NotFoundException(nameof(Domain.Entities.Professional), model.ProfessionalId);
 
         var client = model.ToEntity();
 
