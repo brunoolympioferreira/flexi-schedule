@@ -46,6 +46,12 @@ public class CustomExceptionHandler(ILogger<CustomExceptionHandler> logger) : IE
                 unauthorizedAccessException.GetType().Name,
                 context.Response.StatusCode = StatusCodes.Status401Unauthorized
             ),
+            AlreadyExistsException => 
+            (
+                exception.Message,
+                exception.GetType().Name,
+                context.Response.StatusCode = StatusCodes.Status409Conflict
+            ),
             _ =>
             (
                 exception.Message,
