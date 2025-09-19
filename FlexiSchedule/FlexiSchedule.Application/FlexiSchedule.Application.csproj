@@ -39,7 +39,6 @@
 
   <ItemGroup>
     <Folder Include="Services\Address\ReadOnly\" />
-    <Folder Include="Services\Client\ReadOnly\" />
   </ItemGroup>
 
 </Project>

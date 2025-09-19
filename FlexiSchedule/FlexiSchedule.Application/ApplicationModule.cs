@@ -1,7 +1,4 @@
-﻿using FlexiSchedule.Application.Services.Address.WriteOnly.Create;
-using FlexiSchedule.Application.Services.Client.WriteOnly.Create;
-
-namespace FlexiSchedule.Application;
+﻿namespace FlexiSchedule.Application;
 public static class ApplicationModule
 {
     public static void AddApplication(this IServiceCollection services)
@@ -20,7 +17,8 @@ public static class ApplicationModule
             .AddScoped<IProfessionalReadOnlyService, ProfessionalReadOnlyService>()
             .AddScoped<IRemoveProfessionalService, RemoveProfessionalService>()
             .AddScoped<IAddressService, AddressService>()
-            .AddScoped<ICreateClientService, CreateClientService>();
+            .AddScoped<ICreateClientService, CreateClientService>()
+            .AddScoped<IClientReadOnlyService, ClientReadOnlyService>();
         return services;
     }
 
