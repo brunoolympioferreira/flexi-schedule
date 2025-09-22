@@ -16,6 +16,8 @@ public class ClientReadOnlyService(IUnitOfWork unitOfWork) : IClientReadOnlyServ
                 c.Professional != null ? c.Professional.Name : string.Empty
             ));
 
-        return query.AsEnumerable();
+        var result = query.AsEnumerable();
+
+        return result;
     }
 }

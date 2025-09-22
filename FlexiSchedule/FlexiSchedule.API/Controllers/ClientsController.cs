@@ -17,7 +17,7 @@ public class ClientsController : ControllerBase
         return CreatedAtAction(nameof(Create), new { id = clientId }, null);
     }
 
-    [HttpGet("professional/{professionalId:guid}")]
+    [HttpGet("professionals/{professionalId:guid}")]
     public  IActionResult GetAllByProfessionalId(
         [FromServices] IClientReadOnlyService clientReadOnlyService,
         [FromRoute] Guid professionalId)
