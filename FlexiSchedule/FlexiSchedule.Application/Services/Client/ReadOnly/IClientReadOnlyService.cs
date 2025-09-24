@@ -1,5 +1,7 @@
-﻿namespace FlexiSchedule.Application.Services.Client.ReadOnly;
+﻿using FlexiSchedule.CrossCutting.Models;
+
+namespace FlexiSchedule.Application.Services.Client.ReadOnly;
 public interface IClientReadOnlyService
 {
-    IEnumerable<ClientViewModel> GetAll(Guid professionalId);
+    PagedResult<ClientViewModel> GetAll(Guid professionalId, int pageNumber, int pageSize);
 }

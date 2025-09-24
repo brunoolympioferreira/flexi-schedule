@@ -23,3 +23,7 @@ global using FlexiSchedule.Application.Services.Professional.WriteOnly.Remove;
 global using FlexiSchedule.Application.Services.Address.WriteOnly.Create;
 global using FlexiSchedule.Application.Services.Client.ReadOnly;
 global using FlexiSchedule.Application.Services.Client.WriteOnly.Create;
+global using FlexiSchedule.CrossCutting.Extensions;
+global using FlexiSchedule.CrossCutting.Models;
+global using Microsoft.EntityFrameworkCore;
+global using FlexiSchedule.Application.Extensions;

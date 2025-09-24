@@ -16,12 +16,5 @@ public class ClientRepository(FlexiScheduleSQLServerDbContext dbContext) : IClie
     }
 
     public IQueryable<Client> GetAll()
-    {
-        var clients = dbContext.Clients
-            .Include(p => p.Professional)
-            .AsNoTracking()
-            .AsQueryable();
-
-        return clients;
-    }
+        => dbContext.Clients.AsNoTracking();
 }

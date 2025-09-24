@@ -20,9 +20,11 @@ public class ClientsController : ControllerBase
     [HttpGet("professional/{professionalId:guid}")]
     public  IActionResult GetAllByProfessionalId(
         [FromServices] IClientReadOnlyService clientReadOnlyService,
-        [FromRoute] Guid professionalId)
+        [FromRoute] Guid professionalId, 
+        [FromQuery] int pageNumber = 1, 
+        [FromQuery] int pageSize = 5)
     {
-        var clients = clientReadOnlyService.GetAll(professionalId);
+        var clients = clientReadOnlyService.GetAll(professionalId, pageNumber, pageSize);
 
         return Ok(clients);
     }

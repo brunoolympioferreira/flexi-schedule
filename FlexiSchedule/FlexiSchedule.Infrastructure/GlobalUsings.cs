@@ -7,3 +7,4 @@ global using FlexiSchedule.Domain.Interfaces;
 global using FlexiSchedule.Infrastructure.Persistence.Repositories;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using System.ComponentModel.DataAnnotations.Schema;
+global using FlexiSchedule.Application.Models.ViewModels;
