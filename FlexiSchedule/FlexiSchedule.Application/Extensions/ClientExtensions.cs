@@ -27,4 +27,26 @@ public static class ClientExtensions
                 c.Professional != null ? c.Professional.Name : string.Empty
             ));
     }
+
+    public static ClientDetailsViewModel ToClientDetailsViewModel(this Client client)
+    {
+        return new ClientDetailsViewModel(
+            client.Id,
+            client.Name,
+            client.Email,
+            client.Phone,
+            client.ProfessionalId,
+            client.Professional != null ? client.Professional.Name : string.Empty,
+            [.. client.Addresses.Select(a => new AddressDTO(
+                a.Street,
+                a.Number,
+                a.District,
+                a.City,
+                a.State,
+                a.Country,
+                a.ZipCode,
+                a.Complement
+            ))]
+        );
+    }
 }

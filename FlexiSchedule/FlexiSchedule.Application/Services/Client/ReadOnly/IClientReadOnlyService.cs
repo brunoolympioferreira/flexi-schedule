@@ -4,4 +4,5 @@ namespace FlexiSchedule.Application.Services.Client.ReadOnly;
 public interface IClientReadOnlyService
 {
     PagedResult<ClientViewModel> GetAll(Guid professionalId, int pageNumber, int pageSize);
+    Task<ClientDetailsViewModel?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 }

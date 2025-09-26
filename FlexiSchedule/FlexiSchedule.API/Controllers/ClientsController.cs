@@ -28,4 +28,14 @@ public class ClientsController : ControllerBase
 
         return Ok(clients);
     }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetByIdAsync(
+        [FromServices] IClientReadOnlyService clientReadOnlyService,
+        [FromRoute] Guid id)
+    {
+        var client = await clientReadOnlyService.GetByIdAsync(id, CancellationToken.None);
+
+        return Ok(client);
+    }
 }

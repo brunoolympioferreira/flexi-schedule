@@ -17,4 +17,15 @@ public class ClientRepository(FlexiScheduleSQLServerDbContext dbContext) : IClie
 
     public IQueryable<Client> GetAll()
         => dbContext.Clients.AsNoTracking();
+
+    public Task<Client?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    {
+        var client = dbContext.Clients
+            .Include(p => p.Addresses)
+            .Include(p => p.Professional)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+
+        return client;
+    }
 }
