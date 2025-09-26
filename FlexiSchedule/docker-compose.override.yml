@@ -9,3 +9,8 @@ services:
       - .:/app
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - REDIS_HOST=redis:6379 
+
+  redis:
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes

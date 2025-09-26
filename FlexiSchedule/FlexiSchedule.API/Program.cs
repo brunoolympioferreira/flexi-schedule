@@ -64,6 +64,17 @@ namespace FlexiSchedule.API
 
                 });
 
+            //Redis Configuration
+            builder.Services.AddStackExchangeRedisCache(options =>
+            {
+                var redisHost = Environment.GetEnvironmentVariable("REDIS_HOST")
+                    ?? builder.Configuration.GetConnectionString("Redis")
+                    ?? "localhost:6379";
+
+                options.Configuration = redisHost;
+                options.InstanceName = "FlexiSchedule_";
+            });
+
             builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
             builder.Services.AddEndpointsApiExplorer();
