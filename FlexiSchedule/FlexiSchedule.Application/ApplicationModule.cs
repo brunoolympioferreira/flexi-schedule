@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.Application;
+﻿using FlexiSchedule.Application.Services.Cache;
+
+namespace FlexiSchedule.Application;
 public static class ApplicationModule
 {
     public static void AddApplication(this IServiceCollection services)
@@ -18,7 +20,8 @@ public static class ApplicationModule
             .AddScoped<IRemoveProfessionalService, RemoveProfessionalService>()
             .AddScoped<IAddressService, AddressService>()
             .AddScoped<ICreateClientService, CreateClientService>()
-            .AddScoped<IClientReadOnlyService, ClientReadOnlyService>();
+            .AddScoped<IClientReadOnlyService, ClientReadOnlyService>()
+            .AddScoped<ICacheService, CacheService>();
         return services;
     }
 

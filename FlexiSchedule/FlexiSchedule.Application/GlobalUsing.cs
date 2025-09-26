@@ -27,3 +27,5 @@ global using FlexiSchedule.CrossCutting.Extensions;
 global using FlexiSchedule.CrossCutting.Models;
 global using Microsoft.EntityFrameworkCore;
 global using FlexiSchedule.Application.Extensions;
+global using Microsoft.Extensions.Caching.Distributed;
+global using System.Text.Json;
