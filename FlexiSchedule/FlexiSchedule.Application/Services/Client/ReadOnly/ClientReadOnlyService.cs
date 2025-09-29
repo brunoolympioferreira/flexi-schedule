@@ -4,6 +4,7 @@ public class ClientReadOnlyService(IUnitOfWork unitOfWork) : IClientReadOnlyServ
 {
     public PagedResult<ClientViewModel> GetAll(Guid professionalId, int pageNumber, int pageSize)
     {
+        // fazer get all async se nao tiver filtro, caso sim entao segue no fluxo atual
         var query = unitOfWork.Clients.GetAll()
             .ByProfessional(professionalId)
             .ToClientViewModel();
