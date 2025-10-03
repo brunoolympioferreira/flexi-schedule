@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.API.Controllers;
+﻿using FlexiSchedule.Application.Models.InputModels.Auth;
+
+namespace FlexiSchedule.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class AuthController(IAuthService authService) : ControllerBase

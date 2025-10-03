@@ -1,5 +1,6 @@
 ﻿
 using FlexiSchedule.Application.Models.DTOs.Filters;
+using FlexiSchedule.Application.Models.InputModels.Client;
 using FlexiSchedule.Application.Services.Client.ReadOnly;
 using FlexiSchedule.CrossCutting.Models;
 

@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.Application.Services.Client.WriteOnly.Create;
+﻿using FlexiSchedule.Application.Models.InputModels.Client;
+
+namespace FlexiSchedule.Application.Services.Client.WriteOnly.Create;
 public class CreateClientService(IUnitOfWork unitOfWork, IAddressService addressService) : ICreateClientService
 {
     public async Task<Guid> CreateAsync(CreateClientInputModel model, CancellationToken cancellationToken)

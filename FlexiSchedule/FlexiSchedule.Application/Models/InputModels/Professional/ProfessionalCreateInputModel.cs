@@ -1,4 +1,4 @@
-﻿namespace FlexiSchedule.Application.Models.InputModels;
+﻿namespace FlexiSchedule.Application.Models.InputModels.Professional;
 public record ProfessionalCreateInputModel(
     string Name,
     string Company,

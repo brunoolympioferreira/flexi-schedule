@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.Application.Services.Professional.WriteOnly.Create;
+﻿using FlexiSchedule.Application.Models.InputModels.Professional;
+
+namespace FlexiSchedule.Application.Services.Professional.WriteOnly.Create;
 public class CreateProfessionalService(IUnitOfWork unitOfWork, ProfessionalValidator validator) : ICreateProfessionalService
 {
     public async Task CreateAsync(ProfessionalCreateInputModel inputModel, CancellationToken cancellationToken = default)

@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.API.Controllers;
+﻿using FlexiSchedule.Application.Models.InputModels.Professional;
+
+namespace FlexiSchedule.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]

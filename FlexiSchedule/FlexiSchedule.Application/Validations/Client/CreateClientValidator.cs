@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.Application.Validations.Client;
+﻿using FlexiSchedule.Application.Models.InputModels.Client;
+
+namespace FlexiSchedule.Application.Validations.Client;
 public class CreateClientValidator : AbstractValidator<CreateClientInputModel>
 {
     public CreateClientValidator()

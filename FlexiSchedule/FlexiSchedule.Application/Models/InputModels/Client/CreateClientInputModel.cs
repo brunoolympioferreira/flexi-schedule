@@ -1,4 +1,4 @@
-﻿namespace FlexiSchedule.Application.Models.InputModels;
+﻿namespace FlexiSchedule.Application.Models.InputModels.Client;
 public record CreateClientInputModel(
     string Name, 
     string Email, 

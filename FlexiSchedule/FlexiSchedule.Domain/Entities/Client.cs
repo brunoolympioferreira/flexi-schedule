@@ -18,6 +18,13 @@ public class Client : BaseEntity
         ProfessionalId = professionalId;
     }
 
+    public void Update(string email, string phone, ICollection<Address> addresses)
+    {
+        Email = email;
+        Phone = phone;
+        Addresses = addresses;
+    }
+
     public void AddAdress(Address address)
     {
         Addresses.Add(address);

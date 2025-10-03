@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.Application.Services.Authentication;
+﻿using FlexiSchedule.Application.Models.InputModels.Auth;
+
+namespace FlexiSchedule.Application.Services.Authentication;
 public interface IAuthService
 {
     Task<AuthResponseViewModel> LoginAsync(LoginInputModel model, CancellationToken cancellationToken = default);

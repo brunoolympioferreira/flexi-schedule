@@ -6,6 +6,11 @@ public class ClientRepository(FlexiScheduleSQLServerDbContext dbContext) : IClie
         await dbContext.Clients.AddAsync(client, cancellationToken);
     }
 
+    public void Update(Client client)
+    {
+        dbContext.Clients.Update(client);
+    }
+
     public async Task<bool> ExistsByEmail(string email, CancellationToken cancellationToken)
     {
         bool exists = await dbContext.Clients

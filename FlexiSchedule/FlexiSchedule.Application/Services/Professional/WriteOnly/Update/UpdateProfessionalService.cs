@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.Application.Services.Professional.WriteOnly.Update;
+﻿using FlexiSchedule.Application.Models.InputModels.Professional;
+
+namespace FlexiSchedule.Application.Services.Professional.WriteOnly.Update;
 public class UpdateProfessionalService(IUnitOfWork unitOfWork) : IUpdateProfessionalService
 {
     public async Task UpdateAsync(ProfessionalUpdateInputModel inputModel, Guid id, CancellationToken cancellationToken)

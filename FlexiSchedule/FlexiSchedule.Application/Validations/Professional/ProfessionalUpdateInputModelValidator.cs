@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.Application.Validations.Professional;
+﻿using FlexiSchedule.Application.Models.InputModels.Professional;
+
+namespace FlexiSchedule.Application.Validations.Professional;
 public class ProfessionalUpdateInputModelValidator : AbstractValidator<ProfessionalUpdateInputModel>
 {
     public ProfessionalUpdateInputModelValidator()
