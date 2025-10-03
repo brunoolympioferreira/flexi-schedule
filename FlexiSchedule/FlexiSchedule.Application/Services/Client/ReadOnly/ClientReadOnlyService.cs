@@ -1,12 +1,14 @@
 ﻿
+using FlexiSchedule.Application.Models.DTOs.Filters;
+
 namespace FlexiSchedule.Application.Services.Client.ReadOnly;
 public class ClientReadOnlyService(IUnitOfWork unitOfWork) : IClientReadOnlyService
 {
-    public PagedResult<ClientViewModel> GetAll(Guid professionalId, int pageNumber, int pageSize)
+    public PagedResult<ClientViewModel> GetAll(Guid professionalId, int pageNumber, int pageSize, ClientFilter? filter)
     {
-        // fazer get all async se nao tiver filtro, caso sim entao segue no fluxo atual
         var query = unitOfWork.Clients.GetAll()
             .ByProfessional(professionalId)
+            .ClientFilter(filter)
             .ToClientViewModel();
 
         var result = query.ToPagedResult(pageNumber, pageSize);

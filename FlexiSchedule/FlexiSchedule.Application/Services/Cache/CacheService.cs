@@ -19,7 +19,18 @@ public class CacheService(IDistributedCache cache) : ICacheService
             AbsoluteExpirationRelativeToNow = expiration
         };
 
-        var serializedData = JsonSerializer.Serialize(value);
+        var jsonOptions = new JsonSerializerOptions
+        {
+            ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles,
+            WriteIndented = false
+        };
+
+        var serializedData = JsonSerializer.Serialize(value, jsonOptions);
         return cache.SetStringAsync(key, serializedData, options, cancellationToken);
+    }
+
+    public async Task RemoveAsync(string key, CancellationToken cancellationToken = default)
+    {
+        await cache.RemoveAsync(key, cancellationToken);
     }
 }

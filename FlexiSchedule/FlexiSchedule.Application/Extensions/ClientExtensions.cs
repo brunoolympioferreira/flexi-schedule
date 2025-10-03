@@ -1,4 +1,6 @@
-﻿namespace FlexiSchedule.Application.Extensions;
+﻿using FlexiSchedule.Application.Models.DTOs.Filters;
+
+namespace FlexiSchedule.Application.Extensions;
 public static class ClientExtensions
 {
     /// <summary>
@@ -9,6 +11,23 @@ public static class ClientExtensions
         return query
             .Where(c => c.ProfessionalId == professionalId)
             .AsNoTracking();
+    }
+
+    public static IQueryable<Client> ClientFilter(this IQueryable<Client> query, ClientFilter? filter)
+    {
+        if (!string.IsNullOrWhiteSpace(filter?.Name))
+        {
+            query = query.Where(c => c.Name.Contains(filter.Name));
+        }
+        if (!string.IsNullOrWhiteSpace(filter?.Email))
+        {
+            query = query.Where(c => c.Email.Contains(filter.Email));
+        }
+        if (!string.IsNullOrWhiteSpace(filter?.PhoneNumber))
+        {
+            query = query.Where(c => c.Phone.Contains(filter.PhoneNumber));
+        }
+        return query;
     }
 
     /// <summary>
