@@ -1,7 +1,7 @@
 ﻿namespace FlexiSchedule.Application.Validations.Address;
-public class AddressCreateDTOValidator : AbstractValidator<AddressDTO>
+public class AddressDtoValidator : AbstractValidator<AddressDTO>
 {
-    public AddressCreateDTOValidator()
+    public AddressDtoValidator()
     {
         RuleFor(a => a.Street)
             .NotEmpty().WithMessage("Street is required.")

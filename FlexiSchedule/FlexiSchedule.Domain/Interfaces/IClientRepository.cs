@@ -6,4 +6,5 @@ public interface IClientRepository
     Task<bool> ExistsByEmail(string email, CancellationToken cancellationToken);
     IQueryable<Client> GetAll();
     Task<Client?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<Client?> GeyByIdTrackingAsync(Guid id, CancellationToken cancellationToken);
 }

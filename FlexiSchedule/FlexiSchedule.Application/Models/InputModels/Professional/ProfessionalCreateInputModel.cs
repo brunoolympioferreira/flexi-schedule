@@ -8,7 +8,7 @@ public record ProfessionalCreateInputModel(
     string Password,
     string Phone)
 {
-    public Professional ToEntity(string passwordHash, DocumentTypeEnum documentType) => new(
+    public Domain.Entities.Professional ToEntity(string passwordHash, DocumentTypeEnum documentType) => new(
         Name,
         Company,
         documentType,

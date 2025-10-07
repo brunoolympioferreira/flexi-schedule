@@ -1,10 +1,5 @@
-﻿
-using FlexiSchedule.Application.Models.DTOs.Filters;
-using FlexiSchedule.Application.Models.InputModels.Client;
-using FlexiSchedule.Application.Services.Client.ReadOnly;
-using FlexiSchedule.CrossCutting.Models;
+﻿namespace FlexiSchedule.API.Controllers;
 
-namespace FlexiSchedule.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
@@ -12,7 +7,7 @@ public class ClientsController : ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> Create(
-        [FromServices] ICreateClientService clientService, 
+        [FromServices] ICreateClientService clientService,
         [FromBody] CreateClientInputModel model)
     {
         var clientId = await clientService.CreateAsync(model, CancellationToken.None);
@@ -21,9 +16,9 @@ public class ClientsController : ControllerBase
     }
 
     [HttpGet("professional/{professionalId:guid}")]
-    public  IActionResult GetAllByProfessionalId(
+    public IActionResult GetAllByProfessionalId(
         [FromServices] IClientReadOnlyService clientReadOnlyService,
-        [FromRoute] Guid professionalId, 
+        [FromRoute] Guid professionalId,
         [FromQuery] int pageNumber = 1,
         [FromQuery] int pageSize = 5,
         [FromQuery] ClientFilter? filter = null)
@@ -41,5 +36,15 @@ public class ClientsController : ControllerBase
         var client = await clientReadOnlyService.GetByIdAsync(id, CancellationToken.None);
 
         return Ok(client);
+    }
+
+    [HttpPut("{clientId:guid}")]
+    public async Task<IActionResult> UpdateAsync(
+        [FromServices] IUpdateClientService updateClientService,
+        [FromRoute] Guid clientId,
+        [FromBody] UpdateClientInputModel model)
+    {
+        await updateClientService.UpdateClientAsync(clientId, model, CancellationToken.None);
+        return NoContent();
     }
 }

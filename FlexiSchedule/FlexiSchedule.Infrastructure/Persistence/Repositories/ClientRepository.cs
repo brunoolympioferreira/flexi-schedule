@@ -33,4 +33,13 @@ public class ClientRepository(FlexiScheduleSQLServerDbContext dbContext) : IClie
 
         return client;
     }
+
+    public async Task<Client?> GeyByIdTrackingAsync(Guid id, CancellationToken cancellationToken)
+    {
+        var client = await dbContext.Clients
+            .Include(c => c.Addresses)
+            .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+
+        return client;
+    }
 }

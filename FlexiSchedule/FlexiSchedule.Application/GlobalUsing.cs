@@ -29,3 +29,5 @@ global using Microsoft.EntityFrameworkCore;
 global using FlexiSchedule.Application.Extensions;
 global using Microsoft.Extensions.Caching.Distributed;
 global using System.Text.Json;
+global using FlexiSchedule.Application.Models.InputModels.Client;
+global using FlexiSchedule.Application.Validations.Address;

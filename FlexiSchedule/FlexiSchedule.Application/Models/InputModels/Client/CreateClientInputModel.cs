@@ -7,9 +7,9 @@ public record CreateClientInputModel(
     ICollection<AddressDTO> Adresses
     )
 {
-    public Client ToEntity()
+    public Domain.Entities.Client ToEntity()
     {
-        var client = new Client(Name, Email, Phone, ProfessionalId);
+        var client = new Domain.Entities.Client(Name, Email, Phone, ProfessionalId);
 
         return client;
     }
