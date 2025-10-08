@@ -23,6 +23,7 @@ public class Client : BaseEntity
         Email = email;
         Phone = phone;
         Addresses = addresses;
+        SetUpdatedAt();
     }
 
     public void AddAdress(Address address)
