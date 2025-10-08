@@ -11,6 +11,7 @@ public class Professional : BaseEntity
     public IEnumerable<RefreshToken> RefreshTokens { get; private set; }
 
     public ICollection<Client> Clients { get; set; } = [];
+    public ICollection<Availability> Availabilities { get; set; } = [];
 
 
     // EF Core

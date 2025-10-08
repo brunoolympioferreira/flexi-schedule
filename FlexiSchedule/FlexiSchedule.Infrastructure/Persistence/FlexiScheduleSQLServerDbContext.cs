@@ -6,6 +6,7 @@ public class FlexiScheduleSQLServerDbContext : DbContext
     public DbSet<Professional> Professionals { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<Client> Clients { get; set; }
+    public DbSet<Availability> Availabilities { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
