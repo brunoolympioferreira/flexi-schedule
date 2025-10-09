@@ -31,3 +31,4 @@ global using Microsoft.Extensions.Caching.Distributed;
 global using System.Text.Json;
 global using FlexiSchedule.Application.Models.InputModels.Client;
 global using FlexiSchedule.Application.Validations.Address;
+global using FlexiSchedule.Application.Models.InputModels.Availability;
