@@ -24,9 +24,5 @@ public class CreateAvailabilityValidation : AbstractValidator<CreateAvailability
             .NotEmpty().WithMessage("DateRangeEnd is required.")
             .NotNull().WithMessage("DateRangeEnd cannot be null.")
             .GreaterThan(x => x.DateRangeStart).WithMessage("DateRangeEnd must be greater than DateRangeStart.");
-
-        RuleFor(x => x.ProfessionalId)
-            .NotEmpty().WithMessage("ProfessionalId is required.")
-            .NotNull().WithMessage("ProfessionalId cannot be null.");
     }
 }

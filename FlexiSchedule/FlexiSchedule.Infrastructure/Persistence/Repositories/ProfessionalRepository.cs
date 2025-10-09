@@ -70,4 +70,13 @@ public class ProfessionalRepository(FlexiScheduleSQLServerDbContext dbContext)
 
         return professionals;
     }
+
+    public Task<Professional> GetByIdWithAvailabilitiesAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        var professional = dbContext.Professionals
+            .Include(a => a.Availabilities)
+            .FirstAsync(p => p.Id == id, cancellationToken);
+
+        return professional;
+    }
 }

@@ -5,7 +5,14 @@ public record CreateAvailabilityInputModel(
     DateTime EndTime,
     DateTime DateRangeStart,
     DateTime DateRangeEnd,
-    bool IsClosed,
-    Guid ProfessionalId)
+    bool IsClosed)
 {
+    public Domain.Entities.Availability ToEntity(
+        WeekDayEnum weekDay, 
+        TimeOnly startTime, 
+        TimeOnly endTime, 
+        DateOnly dateRangeStart, 
+        DateOnly DateRangeEnd,
+        Guid professionalId) => 
+        new(weekDay, startTime, endTime, dateRangeStart, DateRangeEnd, IsClosed, professionalId);
 }

@@ -1,5 +1,6 @@
 ﻿using FlexiSchedule.Application.Services.Cache;
 using FlexiSchedule.Application.Services.Client.WriteOnly.Update;
+using FlexiSchedule.Application.Services.Professional.WriteOnly.Availability;
 
 namespace FlexiSchedule.Application;
 public static class ApplicationModule
@@ -23,7 +24,8 @@ public static class ApplicationModule
             .AddScoped<ICreateClientService, CreateClientService>()
             .AddScoped<IClientReadOnlyService, ClientReadOnlyService>()
             .AddScoped<ICacheService, CacheService>()
-            .AddScoped<IUpdateClientService, UpdateClientService>();
+            .AddScoped<IUpdateClientService, UpdateClientService>()
+            .AddScoped<ICreateAvailabilityService, CreateAvailabilityService>();
         return services;
     }
 
