@@ -7,5 +7,7 @@ public enum WeekDayEnum
     Thursday,
     Friday,
     Saturday,
-    Sunday
+    Sunday,
+    MondayToFriday,
+    AllWeek
 }

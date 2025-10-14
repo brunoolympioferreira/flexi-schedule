@@ -54,9 +54,6 @@ public class Professional : BaseEntity
 
         else
         {
-            if (startTime >= endTime)
-                throw new ProfessionalDomainException("The start date must be less than the end date");
-
             //Verifica se o dia já está marcado como fechado dentro do mesmo intervalo
             bool dayIsClosed = Availabilities.Any(a =>
                 a.WeekDay == weekDay &&

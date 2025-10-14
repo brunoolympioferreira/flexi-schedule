@@ -29,9 +29,6 @@ public class Availability : BaseEntity
     public static Availability Add(WeekDayEnum weekDay, TimeOnly startTime, TimeOnly endTime, DateOnly dateRangeStart, DateOnly dateRangeEnd, 
         bool isClosed, Guid professionalId)
     {
-        if (startTime >= endTime)
-            throw new ProfessionalDomainException("The start time must be less than the end time.");
-
         if (dateRangeEnd < dateRangeStart)
             throw new ProfessionalDomainException("The end date must be greater than or equal to the start date.");
 

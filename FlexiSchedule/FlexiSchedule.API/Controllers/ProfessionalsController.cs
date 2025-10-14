@@ -1,4 +1,6 @@
-﻿using FlexiSchedule.Application.Models.InputModels.Professional;
+﻿using FlexiSchedule.Application.Models.InputModels.Availability;
+using FlexiSchedule.Application.Models.InputModels.Professional;
+using FlexiSchedule.Application.Services.Professional.WriteOnly.Availability;
 
 namespace FlexiSchedule.API.Controllers;
 [Route("api/[controller]")]
@@ -41,5 +43,17 @@ public class ProfessionalsController : ControllerBase
         await service.RemoveAsync(id, cancellationToken);
 
         return NoContent();
+    }
+
+    [HttpPost("{id:guid}/availabilities")]
+    public async Task<IActionResult> AddAvailabilities(
+        [FromRoute] Guid id,
+        [FromBody] CreateAvailabilityInputModel model,
+        [FromServices] ICreateAvailabilityService service,
+        CancellationToken cancellationToken)
+    {
+       await service.Add(id, model, cancellationToken);
+
+       return Ok();
     }
 }

@@ -14,7 +14,7 @@ public class AvailabilityConfiguration : IEntityTypeConfiguration<Availability>
             .HasConversion(
                 v => v.ToString(),
                 v => (WeekDayEnum)Enum.Parse(typeof(WeekDayEnum), v))
-            .HasMaxLength(10);
+            .HasMaxLength(20);
 
         builder.Property(a => a.StartTime)
             .HasConversion(

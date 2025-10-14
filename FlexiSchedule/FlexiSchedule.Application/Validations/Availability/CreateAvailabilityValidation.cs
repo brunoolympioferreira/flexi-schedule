@@ -13,8 +13,7 @@ public class CreateAvailabilityValidation : AbstractValidator<CreateAvailability
 
         RuleFor(x => x.EndTime)
             .NotEmpty().WithMessage("EndTime is required.")
-            .NotNull().WithMessage("EndTime cannot be null.")
-            .GreaterThan(x => x.StartTime).WithMessage("EndTime must be greater than StartTime.");
+            .NotNull().WithMessage("EndTime cannot be null.");
 
         RuleFor(x => x.DateRangeStart)
             .NotEmpty().WithMessage("DateRangeStart is required.")
@@ -22,7 +21,6 @@ public class CreateAvailabilityValidation : AbstractValidator<CreateAvailability
 
         RuleFor(x => x.DateRangeEnd)
             .NotEmpty().WithMessage("DateRangeEnd is required.")
-            .NotNull().WithMessage("DateRangeEnd cannot be null.")
-            .GreaterThan(x => x.DateRangeStart).WithMessage("DateRangeEnd must be greater than DateRangeStart.");
+            .NotNull().WithMessage("DateRangeEnd cannot be null.");
     }
 }
