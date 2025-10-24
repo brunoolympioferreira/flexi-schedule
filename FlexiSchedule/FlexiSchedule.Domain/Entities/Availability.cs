@@ -36,4 +36,19 @@ public class Availability : BaseEntity
 
         return availability;
     }
+
+    public static Availability Update(Availability availability, WeekDayEnum weekDay, TimeOnly startTime, TimeOnly endTime, DateOnly dateRangeStart, DateOnly dateRangeEnd,
+        bool isClosed)
+    {
+        if (dateRangeEnd < dateRangeStart)
+            throw new ProfessionalDomainException("The end date must be greater than or equal to the start date.");
+        availability.WeekDay = weekDay;
+        availability.StartTime = startTime;
+        availability.EndTime = endTime;
+        availability.DateRangeStart = dateRangeStart;
+        availability.DateRangeEnd = dateRangeEnd;
+        availability.IsClosed = isClosed;
+        availability.SetUpdatedAt();
+        return availability;
+    }
 }

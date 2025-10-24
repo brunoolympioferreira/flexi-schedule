@@ -6,6 +6,8 @@ public class CreateAvailabilityService(IUnitOfWork unitOfWork) : ICreateAvailabi
         var professional = await unitOfWork.Professionals.GetByIdWithAvailabilitiesAsync(professionalId, cancellationToken) ??
             throw new NotFoundException("Professional not found.");
 
+        var availability = await unitOfWork.Availabilities.GetByProfessionalIdAsync(professionalId, cancellationToken);
+
         if (!Enum.TryParse(model.WeekDay, out WeekDayEnum weekDayEnum))
             throw new ProfessionalDomainException("Invalid weekday value.");
 
@@ -14,14 +16,7 @@ public class CreateAvailabilityService(IUnitOfWork unitOfWork) : ICreateAvailabi
         DateOnly dateRangeStart = DateOnly.FromDateTime(model.DateRangeStart);
         DateOnly dateRangeEnd = DateOnly.FromDateTime(model.DateRangeEnd);
 
-        professional.AddAvailability(
-            weekDayEnum,
-            startTime,
-            endTime,
-            dateRangeStart,
-            dateRangeEnd,
-            model.IsClosed
-        );
+        professional.AddAvailability(availability, weekDayEnum, startTime, endTime, dateRangeStart, dateRangeEnd, model.IsClosed);
 
         unitOfWork.Professionals.Update(professional);
         await unitOfWork.CommitAsync(cancellationToken);

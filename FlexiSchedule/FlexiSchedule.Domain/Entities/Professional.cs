@@ -13,6 +13,8 @@ public class Professional : BaseEntity
     public ICollection<Client> Clients { get; set; } = [];
     public ICollection<Availability> Availabilities { get; set; } = [];
 
+    private Availability _availability;
+
 
     // EF Core
     protected Professional() { }
@@ -40,8 +42,9 @@ public class Professional : BaseEntity
     }
 
     public void AddAvailability(
-        WeekDayEnum weekDay, 
-        TimeOnly startTime, 
+        Availability availability,
+        WeekDayEnum weekDay,
+        TimeOnly startTime,
         TimeOnly endTime, 
         DateOnly dateRangeStart, 
         DateOnly dateRangeEnd,
@@ -50,8 +53,6 @@ public class Professional : BaseEntity
     {
         if (dateRangeEnd < dateRangeStart)
             throw new ProfessionalDomainException("The end date must be greater than or equal to the start date.");
-
-
         else
         {
             //Verifica se o dia já está marcado como fechado dentro do mesmo intervalo
@@ -62,41 +63,32 @@ public class Professional : BaseEntity
 
             if (dayIsClosed)
                 throw new ProfessionalDomainException($"The day {weekDay} is closed and cant't receives open times");
-
-            //Validação de sobreposição de horários
-            bool hasOverlap = Availabilities.Any(a =>
-                a.WeekDay == weekDay &&
-                !a.IsClosed &&
-                !(endTime <= a.StartTime || startTime >= a.EndTime) &&
-                !(dateRangeEnd < a.DateRangeStart || dateRangeStart > a.DateRangeEnd));
-
-            if (hasOverlap)
-                throw new ProfessionalDomainException("There is already a registered availability that conflicts with the time informed.");
         }
 
-        var availability = Availability.Add(
-            weekDay,
-            startTime,
-            endTime,
-            dateRangeStart,
-            dateRangeEnd,
-            isClosed,
-            Id);
-
-        Availabilities.Add(availability);
-    }
-
-    public void AddAvailabilities(IEnumerable<(WeekDayEnum weekDay, TimeOnly startTime, TimeOnly endTime, DateOnly dateRangeStart, DateOnly dateRangeEnd, bool isClosed)> availabilities)
-    {
-        foreach (var item in availabilities)
+        if (Availabilities.Count > 0 && isClosed == false)
         {
-            AddAvailability(
-                item.weekDay,
-                item.startTime,
-                item.endTime,
-                item.dateRangeStart,
-                item.dateRangeEnd,
-                item.isClosed);
+            _availability = Availability.Update(
+                availability,
+                weekDay,
+                startTime,
+                endTime,
+                dateRangeStart,
+                dateRangeEnd,
+                isClosed
+            );
         }
+        else
+        {
+            _availability = Availability.Add(
+                weekDay,
+                startTime,
+                endTime,
+                dateRangeStart,
+                dateRangeEnd,
+                isClosed,
+                Id);
+        }
+
+        Availabilities.Add(_availability);
     }
 }
